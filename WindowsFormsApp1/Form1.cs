@@ -25,8 +25,8 @@ namespace WindowsFormsApp1
 
             decimal Resultado;
 
-            decimal.TryParse(textBox1.Text, out ValorA);
-            decimal.TryParse(textBox2.Text, out ValorB);
+            decimal.TryParse(textBox2.Text, out ValorA);
+            decimal.TryParse(textBox3.Text, out ValorB);
 
             switch (comboBox1.SelectedIndex)
             {
@@ -46,6 +46,13 @@ namespace WindowsFormsApp1
                     operacao = localhost.OperacoesBasicas.Subtracao;
                     break;
             }
+
+            localhost.WebService1 MeuWebService = new localhost.WebService1();
+            Resultado = MeuWebService.Calculadora(ValorA, ValorB, operacao);
+
+            textBox1.Text = Resultado.ToString();
         }
+
+
     }
 }
